@@ -20,7 +20,7 @@ COPY requirements.txt /requirements.txt
 RUN uv pip install -r /requirements.txt --system
 
 # install torch
-RUN pip install torch --index-url https://download.pytorch.org/whl/test/cu128 --no-cache-dir
+RUN pip install torch --index-url https://download.pytorch.org/whl/cu128 --no-cache-dir
 
 # Add src files
 ADD src .

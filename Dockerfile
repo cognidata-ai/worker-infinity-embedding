@@ -2,9 +2,14 @@ FROM nvidia/cuda:12.8.0-cudnn-runtime-ubuntu22.04 AS base
 
 ENV HF_HOME=/runpod-volume
 
-# install python and other packages
-RUN apt-get update && apt-get install -y \
+# install python 3.11 stable from deadsnakes PPA (ubuntu 22.04 only ships python3.11.0rc1
+# which breaks torch 2.8 because sys.get_int_max_str_digits was added in 3.11.0 final)
+RUN apt-get update && apt-get install -y software-properties-common \
+    && add-apt-repository -y ppa:deadsnakes/ppa \
+    && apt-get update && apt-get install -y \
     python3.11 \
+    python3.11-dev \
+    python3.11-distutils \
     python3-pip \
     git \
     wget \

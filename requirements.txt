@@ -2,4 +2,5 @@ runpod~=1.7.0
 infinity-emb[all]==0.0.77
 optimum<2.0
 pyarrow<17.0.0
+transformers<4.49  # required by optimum.bettertransformer (imported by infinity-emb 0.0.77)
 einops # deployment of custom code with nomic
